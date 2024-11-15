@@ -1,3 +1,5 @@
+@import "./scss/vars";
+
 html,
 body,
 #root {
@@ -133,7 +135,7 @@ label {
 
 label {
   input[type="radio"]:checked + div {
-    border: 1px solid #30f;
-    background: #30f;
+    border: 1px solid $accentColor;
+    background: $accentColor;
   }
 }
