@@ -1,3 +1,10 @@
 export interface QuestionsState {
-  value: number;
+  questions: Question[];
 }
+
+export type Question = {
+  id: number;
+  question: string;
+  answers: string[];
+  rightAnswer: number;
+};
