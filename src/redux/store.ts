@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import questions from "./slices/questions/slice";
+import quiz from "./slices/quiz/slice";
 
 export const store = configureStore({
-  reducer: { questions },
+  reducer: { quiz },
 });
 
 export type RootState = ReturnType<typeof store.getState>;

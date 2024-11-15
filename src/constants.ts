@@ -1,6 +1,6 @@
-import { Question } from "./redux/slices/questions/types";
+import { QuestionT } from "./redux/slices/quiz/types";
 
-export const QUESTIONS: Question[] = [
+export const QUESTIONS: QuestionT[] = [
   {
     id: 1,
     question: "Что такое операционная система?",
@@ -10,7 +10,7 @@ export const QUESTIONS: Question[] = [
       "Это набор взаимосвязанных программ, осуществляющих управление компьютером и взаимодействие с пользователем",
       "Нет такого понятия, есть понятие 'файловая система'",
     ],
-    rightAnswer: 2,
+    rightAnswerId: 2,
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ export const QUESTIONS: Question[] = [
       "Нет, Android это программа, которая ставится на операционную систему девайса. ОС на разных девайсах разные",
       "Это домашняя страничка в настройках вашего браузера",
     ],
-    rightAnswer: 0,
+    rightAnswerId: 0,
   },
   {
     id: 3,
@@ -32,13 +32,13 @@ export const QUESTIONS: Question[] = [
       "Это элемент компьютера, с помощью которого обрабатывается информация, находящаяся как в собственной памяти, так и в памяти других устройств",
       "Это суммарный показатель вычислительной мощности компьютера, например 2,7 ГГц",
     ],
-    rightAnswer: 2,
+    rightAnswerId: 2,
   },
   {
     id: 4,
     question: "Какие бывают разрядности у современных процессоров?",
     answers: ["32 и 64 бита", "12 и 32 бита", "15 и 32 бита", "86 и 64 бита"],
-    rightAnswer: 0,
+    rightAnswerId: 0,
   },
   {
     id: 5,
@@ -49,7 +49,7 @@ export const QUESTIONS: Question[] = [
       "Чаще всего используют AMD",
       "Чаще всего используют ARM",
     ],
-    rightAnswer: 3,
+    rightAnswerId: 3,
   },
   {
     id: 6,
@@ -60,7 +60,7 @@ export const QUESTIONS: Question[] = [
       "Для правильной фрагментации памяти",
       "Для дефрагментации данных",
     ],
-    rightAnswer: 0,
+    rightAnswerId: 0,
   },
   {
     id: 7,
@@ -71,7 +71,7 @@ export const QUESTIONS: Question[] = [
       "SSD - это твердотельный накопитель без подвижных частей. Более дешевый, чем HDD. SSD работает быстрее",
       "SSD - это твердотельный накопитель без подвижных частей. Более дорогой, чем HDD. SSD работает быстрее",
     ],
-    rightAnswer: 3,
+    rightAnswerId: 3,
   },
   {
     id: 8,
@@ -82,12 +82,12 @@ export const QUESTIONS: Question[] = [
       "USB отличаются по пропускной способности (micro-USB, mini-USB, lightning и т.д.) и форме (USB 2.0, USB 3.2).",
       "USB отличаются по форме (micro-USB, mini-USB, lightning и т.д.) и пропускной способности (USB 2.0, USB 3.2)",
     ],
-    rightAnswer: 3,
+    rightAnswerId: 3,
   },
   {
     id: 9,
     question: "Какой файловой системы не существует?",
     answers: ["Fat", "NTFS", "APFS", "BolSFS"],
-    rightAnswer: 3,
+    rightAnswerId: 3,
   },
 ];
