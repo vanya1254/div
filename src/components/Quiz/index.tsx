@@ -5,23 +5,30 @@ import styles from "./Quiz.module.scss";
 
 export const Quiz: React.FC = () => {
   const [userAnswer, setUserAnswer] = useState(0);
-  const answers: string[] = [""];
+  const question: string = "Что такое операционная система?";
+  const answers: string[] = [
+    `Это просто программа на компьютере, как и другие - Word или Chrome.`,
+    `Это показатель того, какой процессор используется на компьютере. Например, 32-битный или 64-битный.`,
+    `Это набор взаимосвязанных программ, осуществляющих управление компьютером и взаимодействие с пользователем.`,
+    `Нет такого понятия, есть понятие "файловая система".`,
+  ];
 
   return (
     <div className={styles.root}>
       <fieldset className={styles.root__container}>
-        <legend className={styles.root_question}></legend>
+        <legend className={styles.root_question}>{question}</legend>
         {answers.map((answer, i) => (
-          <div>
+          <label className={styles.root__answers} htmlFor={`${i}`}>
             <input
               type="radio"
               id={`${i}`}
-              name="drone"
+              name="drone" //TODO
               value={answer}
               checked
             />
-            <label htmlFor={`${i}`}>{answer}</label>
-          </div>
+            <div></div>
+            {answer}
+          </label>
         ))}
       </fieldset>
       <ProgressBar />

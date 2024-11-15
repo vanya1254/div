@@ -1,8 +1,10 @@
 html,
-body {
+body,
+#root {
   height: 100%;
   font-family: "Montserrat", serif;
 }
+
 /* Reset and base styles  */
 * {
   padding: 0px;
@@ -106,4 +108,32 @@ label {
 
 legend {
   display: block;
+}
+
+label {
+  input[type="radio"] {
+    display: none;
+  }
+}
+
+label {
+  input[type="radio"] + div {
+    content: "";
+    background: none;
+
+    border: 1px solid #000000;
+    border-radius: 50%;
+
+    width: 20px;
+    height: 20px;
+
+    flex-shrink: 0;
+  }
+}
+
+label {
+  input[type="radio"]:checked + div {
+    border: 1px solid #30f;
+    background: #30f;
+  }
 }
