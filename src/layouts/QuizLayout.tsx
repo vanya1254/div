@@ -5,5 +5,5 @@ type QuizLayotType = {
 };
 
 export const QuizLayout: React.FC<QuizLayotType> = ({ children }) => {
-  return <div>{children}</div>;
+  return <div className="quiz">{children}</div>;
 };

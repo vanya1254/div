@@ -1,0 +1,13 @@
+.quiz {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  height: 100%;
+  padding: 85px 16.666667vw;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: 800;
+}
