@@ -19,6 +19,7 @@ export const Quiz: React.FC = () => {
       addAnswer({
         id: index,
         content: questions[curQuestion].answers[index],
+        question: questions[curQuestion].question,
         isRightAnswer: questions[curQuestion].rightAnswerId === index,
       })
     );

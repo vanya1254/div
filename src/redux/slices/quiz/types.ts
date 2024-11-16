@@ -14,5 +14,6 @@ export type QuestionT = {
 export type AnswerT = {
   id: number;
   content: string;
+  question: string;
   isRightAnswer: boolean;
 };
