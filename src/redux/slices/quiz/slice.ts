@@ -6,7 +6,7 @@ import { QUESTIONS } from "../../../constants";
 const initialState: QuizState = {
   questions: QUESTIONS,
   answers: [],
-  curQuestion: 1,
+  curQuestion: 0,
 };
 
 export const quizSlice = createSlice({

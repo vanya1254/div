@@ -2,7 +2,7 @@ import { QuestionT } from "./redux/slices/quiz/types";
 
 export const QUESTIONS: QuestionT[] = [
   {
-    id: 1,
+    id: 0,
     question: "Что такое операционная система?",
     answers: [
       "Это просто программа на компьютере, как и другие - Word или Chrome",
@@ -13,7 +13,7 @@ export const QUESTIONS: QuestionT[] = [
     rightAnswerId: 2,
   },
   {
-    id: 2,
+    id: 1,
     question: "Является ли Android операционной системой?",
     answers: [
       "Да, это такая же ОС, как и другие, просто для мобильных девайсов",
@@ -24,7 +24,7 @@ export const QUESTIONS: QuestionT[] = [
     rightAnswerId: 0,
   },
   {
-    id: 3,
+    id: 2,
     question: "Что такое процессор компьютера?",
     answers: [
       "Это блок, внутри которого находится дисковод и много разъемов для монитора, клавиатуры и компьютерной мышки",
@@ -35,13 +35,13 @@ export const QUESTIONS: QuestionT[] = [
     rightAnswerId: 2,
   },
   {
-    id: 4,
+    id: 3,
     question: "Какие бывают разрядности у современных процессоров?",
     answers: ["32 и 64 бита", "12 и 32 бита", "15 и 32 бита", "86 и 64 бита"],
     rightAnswerId: 0,
   },
   {
-    id: 5,
+    id: 4,
     question: "Какой тип процессора чаще всего используют мобильные девайсы?",
     answers: [
       "iOS использует Intel, остальные используют AMD",
@@ -52,7 +52,7 @@ export const QUESTIONS: QuestionT[] = [
     rightAnswerId: 3,
   },
   {
-    id: 6,
+    id: 5,
     question: "Для чего компьютеру нужна RAM?",
     answers: [
       "Для быстрого доступа к данным",
@@ -63,7 +63,7 @@ export const QUESTIONS: QuestionT[] = [
     rightAnswerId: 0,
   },
   {
-    id: 7,
+    id: 6,
     question: "Чем отличается HDD от SSD?",
     answers: [
       "HDD - это твердотельный накопитель без подвижных частей. Более дешевый, чем SSD. HDD работает быстрее",
@@ -74,7 +74,7 @@ export const QUESTIONS: QuestionT[] = [
     rightAnswerId: 3,
   },
   {
-    id: 8,
+    id: 7,
     question: "Как отличаются между собой USB?",
     answers: [
       "Бывают только USB 2.0 и 3.2",
@@ -85,7 +85,7 @@ export const QUESTIONS: QuestionT[] = [
     rightAnswerId: 3,
   },
   {
-    id: 9,
+    id: 8,
     question: "Какой файловой системы не существует?",
     answers: ["Fat", "NTFS", "APFS", "BolSFS"],
     rightAnswerId: 3,

@@ -10,14 +10,15 @@ export const ProgressBar: React.FC = () => {
 
   useEffect(() => {
     if (progressRef.current) {
-      const progressPercentage = (curQuestion / 10) * 100;
+      const progressPercentage = (curQuestion / questions.length) * 100;
       progressRef.current.style.setProperty(
         "--progress-value",
         `${progressPercentage}%`
       );
-      progressRef.current.setAttribute("data-value", `${curQuestion}`);
+      progressRef.current.setAttribute("data-value", `${curQuestion || ""}`);
     }
-  }, []);
+    console.log(curQuestion);
+  }, [curQuestion, questions.length]);
 
   return (
     <div className={styles.root}>
@@ -32,9 +33,7 @@ export const ProgressBar: React.FC = () => {
         value={curQuestion}
         data-value={curQuestion}
         className={styles.root__progress}
-      >
-        {curQuestion}
-      </progress>
+      ></progress>
     </div>
   );
 };

@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { quizSelector } from "../../redux/slices/quiz/selectors";
-import { addAnswer } from "../../redux/slices/quiz/slice";
+import { addAnswer, setCurQuestion } from "../../redux/slices/quiz/slice";
 
 import { ProgressBar } from "../ProgressBar";
 
@@ -13,14 +13,20 @@ export const Quiz: React.FC = () => {
   const { questions, curQuestion } = useSelector(quizSelector);
 
   const onChangeAnswer = (index: number) => {
-    dispatch(
-      addAnswer({
-        id: index,
-        content: questions[curQuestion].answers[index],
-        isRightAnswer: questions[curQuestion].rightAnswerId === index,
-      })
-    );
-    console.log(111);
+    // Проверяем, чтобы не выйти за пределы массива вопросов
+    if (curQuestion < questions.length - 1) {
+      dispatch(
+        addAnswer({
+          id: index,
+          content: questions[curQuestion].answers[index],
+          isRightAnswer: questions[curQuestion].rightAnswerId === index,
+        })
+      );
+
+      dispatch(setCurQuestion());
+    } else {
+      console.log("Тест завершён!");
+    }
   };
 
   return (
