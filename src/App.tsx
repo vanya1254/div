@@ -6,11 +6,11 @@ import {
   setCongratsText,
   setCorrectAnswers,
   setIncorrectAnswers,
+  setShuffleQuestions,
 } from "./redux/slices/quiz/slice";
 
 import { QuizLayout } from "./layouts/QuizLayout";
-import { Quiz } from "./components/Quiz";
-import { Congrats } from "./components/Congrats";
+import { Quiz, Congrats } from "./components";
 
 import { CONGRATS_TEXTS } from "./constants";
 
@@ -22,6 +22,12 @@ const App: React.FC = () => {
   const { questions, answers, congratsText } = useSelector(quizSelector);
 
   useEffect(() => {
+    if (isFirstLoad.current) {
+      dispatch(setShuffleQuestions());
+    }
+  }, []);
+
+  useEffect(() => {
     if (!isFirstLoad.current) {
       isFirstLoad.current = false;
     }
@@ -31,7 +37,6 @@ const App: React.FC = () => {
       dispatch(setIncorrectAnswers());
       dispatch(setCongratsText());
     }
-    console.log("Текущие ответы:", answers);
   }, [answers]);
 
   return (

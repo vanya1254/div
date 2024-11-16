@@ -4,14 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { quizSelector } from "../../redux/slices/quiz/selectors";
 import { addAnswer, setCurQuestion } from "../../redux/slices/quiz/slice";
 
-import { ProgressBar } from "../ProgressBar";
+import { ProgressBar } from "../";
 
 import styles from "./Quiz.module.scss";
 
 export const Quiz: React.FC = () => {
   const dispatch = useDispatch();
   const { questions, curQuestion } = useSelector(quizSelector);
-  // const currentAnswer = answers[curQuestion]?.id;
 
   const onChangeAnswer = (index: number) => {
     dispatch(
@@ -36,14 +35,14 @@ export const Quiz: React.FC = () => {
           <label
             key={answer.content}
             className={styles.root__answers}
-            htmlFor={`${i}`}
+            htmlFor={`${answer.id}`}
           >
             <input
               type="radio"
-              id={`${i}`}
+              id={`${answer.id}`}
               name="divQuiz"
               value={answer.content}
-              onChange={() => onChangeAnswer(i)}
+              onChange={() => onChangeAnswer(answer.id)}
             />
             <div></div>
             {answer.content}

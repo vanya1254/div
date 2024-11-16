@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 import { quizSelector } from "../../redux/slices/quiz/selectors";
 
-import { CustomBtn } from "../CustomBtn";
+import { CustomBtn } from "../";
 
 import { CongratsTextE } from "../../globalTypes";
 import { CONGRATS_TEXTS } from "../../constants";

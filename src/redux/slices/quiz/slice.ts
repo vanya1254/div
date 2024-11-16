@@ -1,11 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { QUESTIONS } from "../../../constants";
-import { FullAnswerT, QuizState } from "./types";
+import { FullAnswerT, QuestionT, QuizState } from "./types";
 import { CongratsTextE } from "../../../globalTypes";
+import { shuffleArray } from "../../../utils/shuflleArray";
 
 const initialState: QuizState = {
-  questions: QUESTIONS,
+  questions: [],
   answers: [],
   curQuestion: 0,
   correctAnswers: [],
@@ -17,10 +18,18 @@ export const quizSlice = createSlice({
   name: "quiz",
   initialState,
   reducers: {
+    setShuffleQuestions: (state) => {
+      const questionsCopy = JSON.parse(JSON.stringify(QUESTIONS)).map(
+        (question: QuestionT) => ({
+          ...question,
+          answers: shuffleArray(question.answers),
+        })
+      ) as QuestionT[];
+
+      state.questions = shuffleArray(questionsCopy);
+    },
     addAnswer: (state, action: PayloadAction<FullAnswerT>) => {
       state.answers.push(action.payload);
-
-      console.log("answer", state.answers[state.answers.length - 1]);
     },
     setCurQuestion: (state) => {
       state.curQuestion += 1;
@@ -48,6 +57,7 @@ export const quizSlice = createSlice({
 });
 
 export const {
+  setShuffleQuestions,
   addAnswer,
   setCurQuestion,
   setCorrectAnswers,

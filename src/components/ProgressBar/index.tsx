@@ -1,8 +1,9 @@
 import React, { useEffect, useRef } from "react";
+import { useSelector } from "react-redux";
+
+import { quizSelector } from "../../redux/slices/quiz/selectors";
 
 import styles from "./ProgressBar.module.scss";
-import { useSelector } from "react-redux";
-import { quizSelector } from "../../redux/slices/quiz/selectors";
 
 export const ProgressBar: React.FC = () => {
   const progressRef = useRef<HTMLProgressElement>(null);
