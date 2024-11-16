@@ -119,7 +119,7 @@ label {
 }
 
 label {
-  input[type="radio"] + div {
+  input[type="radio"] + span {
     content: "";
     background: none;
 
@@ -134,7 +134,7 @@ label {
 }
 
 label {
-  input[type="radio"]:checked + div {
+  input[type="radio"]:checked + span {
     border: 1px solid $accentColor;
     background: $accentColor;
   }

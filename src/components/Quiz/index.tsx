@@ -44,7 +44,7 @@ export const Quiz: React.FC = () => {
               value={answer.content}
               onChange={() => onChangeAnswer(answer.id)}
             />
-            <div></div>
+            <span></span>
             {answer.content}
           </label>
         ))}
