@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { QUESTIONS } from "../../../constants";
+import { QUESTIONS, SPECIAL_QUESTION } from "../../../constants";
 import { FullAnswerT, QuestionT, QuizState } from "./types";
 import { CongratsTextE } from "../../../globalTypes";
 import { shuffleArray } from "../../../utils/shuflleArray";
@@ -27,6 +27,8 @@ export const quizSlice = createSlice({
       ) as QuestionT[];
 
       state.questions = shuffleArray(questionsCopy);
+
+      state.questions.push(SPECIAL_QUESTION);
     },
     addAnswer: (state, action: PayloadAction<FullAnswerT>) => {
       state.answers.push(action.payload);

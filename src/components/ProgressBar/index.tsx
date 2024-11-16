@@ -18,7 +18,6 @@ export const ProgressBar: React.FC = () => {
       );
       progressRef.current.setAttribute("data-value", `${curQuestion || ""}`);
     }
-    console.log(curQuestion);
   }, [curQuestion, questions.length]);
 
   return (

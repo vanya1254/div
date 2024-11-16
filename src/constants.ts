@@ -157,18 +157,19 @@ export const QUESTIONS: QuestionT[] = [
     ],
     rightAnswerId: 3,
   },
-  {
-    id: 9,
-    question: "Вам понравилось выполненное тестовое задание?",
-    answers: [
-      { id: 0, content: "Однозначно! :3" },
-      { id: 1, content: "Скорее понравилось, чем нет :)" },
-      { id: 2, content: "Скорее не понравилось :|" },
-      { id: 3, content: "Точно нет! :((" },
-    ],
-    rightAnswerId: 0,
-  },
 ];
+
+export const SPECIAL_QUESTION: QuestionT = {
+  id: 9,
+  question: "Вам понравилось выполненное тестовое задание?",
+  answers: [
+    { id: 0, content: "Однозначно! :3" },
+    { id: 1, content: "Скорее понравилось, чем нет :)" },
+    { id: 2, content: "Скорее не понравилось :|" },
+    { id: 3, content: "Точно нет! :((" },
+  ],
+  rightAnswerId: 0,
+};
 
 export const CONGRATS_TEXTS: CongratsTextsT = {
   WIN: {
