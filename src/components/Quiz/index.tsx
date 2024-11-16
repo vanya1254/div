@@ -11,23 +11,19 @@ import styles from "./Quiz.module.scss";
 export const Quiz: React.FC = () => {
   const dispatch = useDispatch();
   const { questions, curQuestion } = useSelector(quizSelector);
+  // const currentAnswer = answers[curQuestion]?.id;
 
   const onChangeAnswer = (index: number) => {
-    // Проверяем, чтобы не выйти за пределы массива вопросов
-    // if (curQuestion < questions.length - 1) {
     dispatch(
       addAnswer({
         id: index,
-        content: questions[curQuestion].answers[index],
+        content: questions[curQuestion].answers[index].content,
         question: questions[curQuestion].question,
         isRightAnswer: questions[curQuestion].rightAnswerId === index,
       })
     );
 
     dispatch(setCurQuestion());
-    // } else {
-    //   console.log("Тест завершён!");
-    // }
   };
 
   return (
@@ -37,16 +33,20 @@ export const Quiz: React.FC = () => {
           {questions[curQuestion].question}
         </legend>
         {questions[curQuestion].answers.map((answer, i) => (
-          <label key={i} className={styles.root__answers} htmlFor={`${i}`}>
+          <label
+            key={answer.content}
+            className={styles.root__answers}
+            htmlFor={`${i}`}
+          >
             <input
               type="radio"
               id={`${i}`}
               name="divQuiz"
-              value={answer}
+              value={answer.content}
               onChange={() => onChangeAnswer(i)}
             />
             <div></div>
-            {answer}
+            {answer.content}
           </label>
         ))}
       </fieldset>

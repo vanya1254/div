@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { QUESTIONS } from "../../../constants";
-import { AnswerT, QuizState } from "./types";
+import { FullAnswerT, QuizState } from "./types";
 import { CongratsTextE } from "../../../globalTypes";
 
 const initialState: QuizState = {
@@ -17,7 +17,7 @@ export const quizSlice = createSlice({
   name: "quiz",
   initialState,
   reducers: {
-    addAnswer: (state, action: PayloadAction<AnswerT>) => {
+    addAnswer: (state, action: PayloadAction<FullAnswerT>) => {
       state.answers.push(action.payload);
 
       console.log("answer", state.answers[state.answers.length - 1]);
