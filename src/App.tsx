@@ -7,10 +7,11 @@ import { QuizLayout } from "./layouts/QuizLayout";
 import { Quiz } from "./components/Quiz";
 
 import "./App.scss";
+import { Congrats } from "./components/Congrats";
 
 const App: React.FC = () => {
   const isFirstLoad = useRef(true);
-  const { answers } = useSelector(quizSelector);
+  const { questions, answers } = useSelector(quizSelector);
 
   useEffect(() => {
     if (!isFirstLoad.current) {
@@ -23,7 +24,7 @@ const App: React.FC = () => {
     <>
       <QuizLayout>
         <h1 className="title">Тестирование</h1>
-        <Quiz />
+        {questions.length === answers.length ? <Congrats /> : <Quiz />}
       </QuizLayout>
     </>
   );

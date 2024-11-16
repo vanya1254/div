@@ -14,19 +14,19 @@ export const Quiz: React.FC = () => {
 
   const onChangeAnswer = (index: number) => {
     // Проверяем, чтобы не выйти за пределы массива вопросов
-    if (curQuestion < questions.length - 1) {
-      dispatch(
-        addAnswer({
-          id: index,
-          content: questions[curQuestion].answers[index],
-          isRightAnswer: questions[curQuestion].rightAnswerId === index,
-        })
-      );
+    // if (curQuestion < questions.length - 1) {
+    dispatch(
+      addAnswer({
+        id: index,
+        content: questions[curQuestion].answers[index],
+        isRightAnswer: questions[curQuestion].rightAnswerId === index,
+      })
+    );
 
-      dispatch(setCurQuestion());
-    } else {
-      console.log("Тест завершён!");
-    }
+    dispatch(setCurQuestion());
+    // } else {
+    //   console.log("Тест завершён!");
+    // }
   };
 
   return (
