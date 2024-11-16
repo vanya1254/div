@@ -2,36 +2,28 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 import { quizSelector } from "../../redux/slices/quiz/selectors";
-import { CongratsTextE } from "../../globalTypes";
-import { CONGRATS_TEXTS } from "../../constants";
 
 import { CustomBtn } from "../CustomBtn";
+
+import { CongratsTextE } from "../../globalTypes";
+import { CONGRATS_TEXTS } from "../../constants";
 
 import styles from "./Congrats.module.scss";
 
 export const Congrats: React.FC = () => {
-  const { answers } = useSelector(quizSelector);
+  const { answers, congratsText, correctAnswers } = useSelector(quizSelector);
 
-  const congratsText = (() => {
-    const correctAnswers = answers.filter(
-      (answer) => answer.isRightAnswer === true
-    );
-    const incorrectAnswers = answers.filter(
-      (answer) => answer.isRightAnswer === false
-    );
-
-    if (correctAnswers.length === answers.length) {
-      return CongratsTextE.Win;
-    } else if (incorrectAnswers.length === answers.length) {
-      return CongratsTextE.Lose;
-    } else {
-      return CongratsTextE.SemiWin;
-    }
-  })();
+  const congrats =
+    congratsText === CongratsTextE.SemiWin
+      ? CONGRATS_TEXTS[congratsText].text.replace(
+          "5",
+          `${correctAnswers.length}`
+        )
+      : CONGRATS_TEXTS[congratsText].text;
 
   return (
     <div className={styles.root}>
-      <p className={styles.root_text}>{CONGRATS_TEXTS[congratsText].text}</p>
+      <p className={styles.root_text}>{congrats}</p>
       <ul className={styles.root__answers}>
         {answers.map((answer, i) => (
           <li
@@ -47,7 +39,13 @@ export const Congrats: React.FC = () => {
           </li>
         ))}
       </ul>
-      <CustomBtn>Пройти еще раз</CustomBtn>
+      {congratsText === CongratsTextE.Win ? (
+        ""
+      ) : (
+        <CustomBtn onClick={() => window.location.reload()}>
+          Пройти еще раз
+        </CustomBtn>
+      )}
     </div>
   );
 };

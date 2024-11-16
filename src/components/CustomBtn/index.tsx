@@ -4,8 +4,13 @@ import styles from "./CustomBtn.module.scss";
 
 type CustomBtn = {
   children: React.ReactNode;
+  onClick: React.MouseEventHandler<HTMLButtonElement> | undefined;
 };
 
-export const CustomBtn: React.FC<CustomBtn> = ({ children }) => {
-  return <button className={styles.root}>{children}</button>;
+export const CustomBtn: React.FC<CustomBtn> = ({ children, onClick }) => {
+  return (
+    <button onClick={onClick} className={styles.root}>
+      {children}
+    </button>
+  );
 };

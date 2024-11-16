@@ -1,7 +1,12 @@
+import { CongratsTextE } from "../../../globalTypes";
+
 export interface QuizState {
   questions: QuestionT[];
   answers: AnswerT[];
   curQuestion: number;
+  correctAnswers: AnswerT[];
+  incorrectAnswers: AnswerT[];
+  congratsText: CongratsTextE;
 }
 
 export type QuestionT = {
