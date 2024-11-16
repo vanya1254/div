@@ -7,6 +7,7 @@ export interface QuizState {
   correctAnswers: FullAnswerT[];
   incorrectAnswers: FullAnswerT[];
   congratsText: CongratsTextE;
+  showCongrats: boolean;
 }
 
 export type QuestionT = {

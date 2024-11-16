@@ -12,6 +12,7 @@ const initialState: QuizState = {
   correctAnswers: [],
   incorrectAnswers: [],
   congratsText: CongratsTextE.Win,
+  showCongrats: false,
 };
 
 export const quizSlice = createSlice({
@@ -55,6 +56,12 @@ export const quizSlice = createSlice({
         state.congratsText = CongratsTextE.SemiWin;
       }
     },
+    showCongratsScreen: (state) => {
+      state.showCongrats = true;
+    },
+    resetQuiz: (state) => {
+      Object.assign(state, initialState);
+    },
   },
 });
 
@@ -65,6 +72,8 @@ export const {
   setCorrectAnswers,
   setIncorrectAnswers,
   setCongratsText,
+  showCongratsScreen,
+  resetQuiz,
 } = quizSlice.actions;
 
 export default quizSlice.reducer;

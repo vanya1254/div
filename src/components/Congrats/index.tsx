@@ -1,7 +1,8 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { quizSelector } from "../../redux/slices/quiz/selectors";
+import { resetQuiz } from "../../redux/slices/quiz/slice";
 
 import { CustomBtn } from "../";
 
@@ -11,6 +12,7 @@ import { CONGRATS_TEXTS } from "../../constants";
 import styles from "./Congrats.module.scss";
 
 export const Congrats: React.FC = () => {
+  const dispatch = useDispatch();
   const { answers, congratsText, correctAnswers } = useSelector(quizSelector);
 
   const congrats =
@@ -42,7 +44,7 @@ export const Congrats: React.FC = () => {
       {congratsText === CongratsTextE.Win ? (
         ""
       ) : (
-        <CustomBtn onClick={() => window.location.reload()}>
+        <CustomBtn onClick={() => dispatch(resetQuiz())}>
           Пройти еще раз
         </CustomBtn>
       )}

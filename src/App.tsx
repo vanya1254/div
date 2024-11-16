@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { quizSelector } from "./redux/slices/quiz/selectors";
@@ -7,6 +7,7 @@ import {
   setCorrectAnswers,
   setIncorrectAnswers,
   setShuffleQuestions,
+  showCongratsScreen,
 } from "./redux/slices/quiz/slice";
 
 import { QuizLayout } from "./layouts/QuizLayout";
@@ -18,17 +19,14 @@ import "./App.scss";
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
-  const isFirstLoad = useRef(true);
-  const { questions, answers, congratsText } = useSelector(quizSelector);
-
-  const [showCongrats, setShowCongrats] = useState(false);
+  const { questions, answers, congratsText, showCongrats } =
+    useSelector(quizSelector);
 
   useEffect(() => {
-    if (isFirstLoad.current) {
+    if (questions.length === 0) {
       dispatch(setShuffleQuestions());
-      isFirstLoad.current = false;
     }
-  }, []);
+  }, [questions]);
 
   useEffect(() => {
     if (answers.length === questions.length) {
@@ -36,7 +34,7 @@ const App: React.FC = () => {
       dispatch(setIncorrectAnswers());
       dispatch(setCongratsText());
 
-      setTimeout(() => setShowCongrats(true), 1000);
+      setTimeout(() => dispatch(showCongratsScreen()), 1000);
     }
   }, [answers]);
 
