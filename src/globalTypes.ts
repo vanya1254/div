@@ -9,3 +9,9 @@ export type CongratsTextT = {
   text: string;
   type: CongratsTextE;
 };
+
+export type CongratsTextsT = {
+  [CongratsTextE.Win]: CongratsTextT;
+  [CongratsTextE.SemiWin]: CongratsTextT;
+  [CongratsTextE.Lose]: CongratsTextT;
+};

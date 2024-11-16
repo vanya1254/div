@@ -1,4 +1,4 @@
-import { CongratsTextE, CongratsTextT } from "./globalTypes";
+import { CongratsTextE, CongratsTextsT } from "./globalTypes";
 import { QuestionT } from "./redux/slices/quiz/types";
 
 export const QUESTIONS: QuestionT[] = [
@@ -104,23 +104,23 @@ export const QUESTIONS: QuestionT[] = [
   },
 ];
 
-export const CONGRATS_TEXTS: CongratsTextT[] = [
-  {
+export const CONGRATS_TEXTS: CongratsTextsT = {
+  WIN: {
     title: "Поздравляем!",
     text: `Вы правильно ответили на все вопросы. 
     Вы действительно отлично разбираетесь в IT. `,
     type: CongratsTextE.Win,
   },
-  {
+  SEMIWIN: {
     title: "Хороший результат!",
     text: `Вы ответили правильно на 5 вопросов.
 Так держать!`,
     type: CongratsTextE.SemiWin,
   },
-  {
+  LOSE: {
     title: "Упс :(",
     text: `Вы неправильно ответили на все вопросы. 
     Нужно подучить теорию.`,
     type: CongratsTextE.Lose,
   },
-];
+};
