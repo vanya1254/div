@@ -1,5 +1,11 @@
 import React from "react";
 
-export const CustomBtn: React.FC = () => {
-  return <button>CustomBtn:React.FC</button>;
+import styles from "./CustomBtn.module.scss";
+
+type CustomBtn = {
+  children: React.ReactNode;
+};
+
+export const CustomBtn: React.FC<CustomBtn> = ({ children }) => {
+  return <button className={styles.root}>{children}</button>;
 };

@@ -5,6 +5,8 @@ import { quizSelector } from "../../redux/slices/quiz/selectors";
 import { CongratsTextE } from "../../globalTypes";
 import { CONGRATS_TEXTS } from "../../constants";
 
+import { CustomBtn } from "../CustomBtn";
+
 import styles from "./Congrats.module.scss";
 
 export const Congrats: React.FC = () => {
@@ -45,7 +47,7 @@ export const Congrats: React.FC = () => {
           </li>
         ))}
       </ul>
-      <button></button>
+      <CustomBtn>Пройти еще раз</CustomBtn>
     </div>
   );
 };

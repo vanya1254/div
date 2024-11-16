@@ -1,2 +1,18 @@
+@import "../../scss/vars";
+
 .root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+
+  padding: 16px 30px;
+  border-radius: 10px;
+  width: fit-content;
+
+  background-color: $accentColor;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: normal;
 }
