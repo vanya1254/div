@@ -19,11 +19,14 @@ export const Quiz: React.FC = () => {
       setIsAnswered(true);
 
       const question = questions[curQuestion];
+      const userAnswer = question.answers.filter(
+        (answer) => answer.id === index
+      )[0];
 
       dispatch(
         addAnswer({
           id: index,
-          content: question.answers[index].content,
+          content: userAnswer.content,
           question: question.question,
           isRightAnswer: question.rightAnswerId === index,
         })
