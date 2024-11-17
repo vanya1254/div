@@ -26,17 +26,17 @@ const App: React.FC = () => {
     if (questions.length === 0) {
       dispatch(setShuffleQuestions());
     }
-  }, [questions]);
+  }, [questions, dispatch]);
 
   useEffect(() => {
-    if (answers.length === questions.length) {
+    if (questions.length > 0 && answers.length === questions.length) {
       dispatch(setCorrectAnswers());
       dispatch(setIncorrectAnswers());
       dispatch(setCongratsText());
 
       setTimeout(() => dispatch(showCongratsScreen()), 1000);
     }
-  }, [answers]);
+  }, [answers, questions, dispatch]);
 
   const isQuizCompleted = questions.length === answers.length;
 
