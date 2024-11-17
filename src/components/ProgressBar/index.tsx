@@ -1,13 +1,13 @@
 import React, { useEffect, useRef } from "react";
-import { useSelector } from "react-redux";
+import { shallowEqual, useSelector } from "react-redux";
 
 import { quizSelector } from "../../redux/slices/quiz/selectors";
 
 import styles from "./ProgressBar.module.scss";
 
 export const ProgressBar: React.FC = () => {
+  const { questions, curQuestion } = useSelector(quizSelector, shallowEqual);
   const progressRef = useRef<HTMLProgressElement>(null);
-  const { questions, curQuestion } = useSelector(quizSelector);
 
   useEffect(() => {
     if (progressRef.current) {

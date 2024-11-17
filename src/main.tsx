@@ -8,7 +8,13 @@ import App from "./App.tsx";
 
 import "./index.scss";
 
-createRoot(document.getElementById("root")!).render(
+const rootElement = document.getElementById("root");
+
+if (!rootElement) {
+  throw new Error("Root elementnot found");
+}
+
+createRoot(rootElement).render(
   <StrictMode>
     <Provider store={store}>
       <App />

@@ -2,13 +2,7 @@ import React, { useEffect, useMemo } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
 import { quizSelector } from "./redux/slices/quiz/selectors";
-import {
-  setCongratsText,
-  setCorrectAnswers,
-  setIncorrectAnswers,
-  setShuffleQuestions,
-  showCongratsScreen,
-} from "./redux/slices/quiz/slice";
+import { finalizeQuiz, setShuffleQuestions } from "./redux/slices/quiz/slice";
 
 import { QuizLayout } from "./layouts/QuizLayout";
 import { Quiz, Congrats, Loader } from "./components";
@@ -35,11 +29,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     if (isQuizCompleted) {
-      dispatch(setCorrectAnswers());
-      dispatch(setIncorrectAnswers());
-      dispatch(setCongratsText());
-
-      setTimeout(() => dispatch(showCongratsScreen()), 1000);
+      setTimeout(() => dispatch(finalizeQuiz()), 1000);
     }
   }, [isQuizCompleted, dispatch]);
 

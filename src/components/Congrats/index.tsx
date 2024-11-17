@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
 import { quizSelector } from "../../redux/slices/quiz/selectors";
 import { resetQuiz } from "../../redux/slices/quiz/slice";
@@ -13,19 +13,18 @@ import styles from "./Congrats.module.scss";
 
 export const Congrats: React.FC = () => {
   const dispatch = useDispatch();
-  const { answers, congratsText, correctAnswers } = useSelector(quizSelector);
+  const { answers, congratsText, correctAnswers } = useSelector(
+    quizSelector,
+    shallowEqual
+  );
 
-  const congrats =
-    congratsText === CongratsTextE.SemiWin
-      ? CONGRATS_TEXTS[congratsText].text.replace(
-          "5",
-          `${correctAnswers.length}`
-        )
-      : CONGRATS_TEXTS[congratsText].text;
+  const congratsMessage = congratsText.includes(CongratsTextE.SemiWin)
+    ? CONGRATS_TEXTS[congratsText].text.replace("5", `${correctAnswers.length}`)
+    : CONGRATS_TEXTS[congratsText].text;
 
   return (
     <div className={styles.root}>
-      <p className={styles.root_text}>{congrats}</p>
+      <p className={styles.root_text}>{congratsMessage}</p>
       <ul className={styles.root__answers}>
         {answers.map((answer, i) => (
           <li

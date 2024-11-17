@@ -1,39 +1,44 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useCallback, useState } from "react";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
 import { quizSelector } from "../../redux/slices/quiz/selectors";
 import { addAnswer, setCurQuestion } from "../../redux/slices/quiz/slice";
 
-import { ProgressBar } from "../";
+import { Loader, ProgressBar } from "../";
 
 import styles from "./Quiz.module.scss";
 
 export const Quiz: React.FC = () => {
   const dispatch = useDispatch();
-  const { questions, curQuestion } = useSelector(quizSelector);
+  const { questions, curQuestion } = useSelector(quizSelector, shallowEqual);
   const [isAnswered, setIsAnswered] = useState(false);
 
-  const onChangeAnswer = (index: number) => {
-    if (isAnswered) return;
-    setIsAnswered(true);
+  const onChangeAnswer = useCallback(
+    (index: number) => {
+      if (isAnswered) return;
+      setIsAnswered(true);
 
-    dispatch(
-      addAnswer({
-        id: index,
-        content: questions[curQuestion].answers[index].content,
-        question: questions[curQuestion].question,
-        isRightAnswer: questions[curQuestion].rightAnswerId === index,
-      })
-    );
+      const question = questions[curQuestion];
 
-    setTimeout(() => {
-      dispatch(setCurQuestion());
-      setIsAnswered(false);
-    }, 1000);
-  };
+      dispatch(
+        addAnswer({
+          id: index,
+          content: question.answers[index].content,
+          question: question.question,
+          isRightAnswer: question.rightAnswerId === index,
+        })
+      );
+
+      setTimeout(() => {
+        dispatch(setCurQuestion());
+        setIsAnswered(false);
+      }, 1000);
+    },
+    [isAnswered, questions, curQuestion, dispatch]
+  );
 
   if (!questions[curQuestion]) {
-    return "Loading...";
+    return <Loader />;
   }
 
   return (

@@ -1,6 +1,10 @@
 import { CongratsTextE, CongratsTextsT } from "./globalTypes";
 import { QuestionT } from "./redux/slices/quiz/types";
 
+/**
+ * Список вопросов для теста.
+ * @type {QuestionT[]}
+ */
 export const QUESTIONS: QuestionT[] = [
   {
     id: 0,
@@ -159,6 +163,10 @@ export const QUESTIONS: QuestionT[] = [
   },
 ];
 
+/**
+ * Специальный вопрос для окончания теста.
+ * @type {QuestionT}
+ */
 export const SPECIAL_QUESTION: QuestionT = {
   id: 9,
   question: "Вам понравилось выполненное тестовое задание?",
@@ -171,6 +179,10 @@ export const SPECIAL_QUESTION: QuestionT = {
   rightAnswerId: 0,
 };
 
+/**
+ * Тексты поздравлений в зависимости от результата теста.
+ * @type {CongratsTextsT}
+ */
 export const CONGRATS_TEXTS: CongratsTextsT = {
   WIN: {
     title: "Поздравляем!",

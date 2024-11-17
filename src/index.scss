@@ -112,6 +112,7 @@ legend {
   display: block;
 }
 
+/* Скрываем стандартные элементы радио-кнопок */
 label {
   input[type="radio"] {
     display: none;
@@ -119,6 +120,7 @@ label {
 }
 
 label {
+  /* Стили для элемента <span>, который будет имитировать радио-кнопку */
   input[type="radio"] + span {
     content: "";
     background: none;
@@ -133,6 +135,7 @@ label {
   }
 }
 
+/* Стили для активного состояния (когда кнопка выбрана) */
 label {
   input[type="radio"]:checked + span {
     border: 1px solid $accentColor;
