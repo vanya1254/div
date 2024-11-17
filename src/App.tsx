@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useMemo } from "react";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
 import { quizSelector } from "./redux/slices/quiz/selectors";
 import {
@@ -11,7 +11,7 @@ import {
 } from "./redux/slices/quiz/slice";
 
 import { QuizLayout } from "./layouts/QuizLayout";
-import { Quiz, Congrats } from "./components";
+import { Quiz, Congrats, Loader } from "./components";
 
 import { CONGRATS_TEXTS } from "./constants";
 
@@ -19,26 +19,29 @@ import "./App.scss";
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
-  const { questions, answers, congratsText, showCongrats } =
-    useSelector(quizSelector);
+  const { questions, answers, congratsText, showCongrats } = useSelector(
+    quizSelector,
+    shallowEqual
+  );
+
+  const isQuizCompleted = useMemo(
+    () => questions.length > 0 && questions.length === answers.length,
+    [questions, answers]
+  );
 
   useEffect(() => {
-    if (questions.length === 0) {
-      dispatch(setShuffleQuestions());
-    }
-  }, [questions, dispatch]);
+    if (questions.length === 0) dispatch(setShuffleQuestions());
+  }, [questions.length, dispatch]);
 
   useEffect(() => {
-    if (questions.length > 0 && answers.length === questions.length) {
+    if (isQuizCompleted) {
       dispatch(setCorrectAnswers());
       dispatch(setIncorrectAnswers());
       dispatch(setCongratsText());
 
       setTimeout(() => dispatch(showCongratsScreen()), 1000);
     }
-  }, [answers, questions, dispatch]);
-
-  const isQuizCompleted = questions.length === answers.length;
+  }, [isQuizCompleted, dispatch]);
 
   return (
     <>
@@ -48,15 +51,7 @@ const App: React.FC = () => {
             ? CONGRATS_TEXTS[congratsText].title
             : "Тестирование"}
         </h1>
-        {isQuizCompleted ? (
-          showCongrats ? (
-            <Congrats />
-          ) : (
-            "Loading..."
-          )
-        ) : (
-          <Quiz />
-        )}
+        {isQuizCompleted ? showCongrats ? <Congrats /> : <Loader /> : <Quiz />}
       </QuizLayout>
     </>
   );

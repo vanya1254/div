@@ -1,0 +1,19 @@
+@use "../../scss/animations" as *;
+
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 100%;
+
+  svg {
+    width: 40px;
+
+    animation: rotate 1.64s linear infinite;
+
+    path {
+      fill: #893724;
+    }
+  }
+}
